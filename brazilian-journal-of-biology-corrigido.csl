@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="pt-BR">
+  <info>
+    <title>Brazilian Journal of Biology (ISO 690 - corrigido)</title>
+    <id>http://www.zotero.org/styles/brazilian-journal-of-biology-corrigido</id>
+    <link href="http://www.zotero.org/styles/brazilian-journal-of-biology-corrigido" rel="self"/>
+    <author>
+      <name>Raul Silva Barros Rocha</name>
+    </author>
+    <category citation-format="note"/>
+    <updated>2025-07-26T00:00:00+00:00</updated>
+    <summary>Estilo corrigido compatível com ISO 690 e Mendeley Cite.</summary>
+  </info>
+
+  <macro name="author">
+    <names variable="author">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+
+  <macro name="editor">
+    <names variable="editor">
+      <name form="long" and="text" delimiter=", " initialize-with="."/>
+      <label form="short" prefix=", " text-case="lowercase"/>
+    </names>
+  </macro>
+
+  <macro name="issued">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+
+  <macro name="title">
+    <text variable="title" font-style="italic"/>
+  </macro>
+
+  <macro name="publisher">
+    <group delimiter=", ">
+      <text variable="publisher-place"/>
+      <text variable="publisher"/>
+    </group>
+  </macro>
+
+  <macro name="pages">
+    <text variable="page" prefix="pp. "/>
+  </macro>
+
+  <macro name="access">
+    <group delimiter=". ">
+      <text variable="URL" prefix="Available from: "/>
+      <date variable="accessed" prefix="[viewed " suffix="]">
+        <date-part name="day" suffix=" "/>
+        <date-part name="month" suffix=" "/>
+        <date-part name="year"/>
+      </date>
+    </group>
+  </macro>
+
+  <citation>
+    <layout prefix="" suffix="." delimiter="; ">
+      <text macro="author"/>
+      <text macro="issued" prefix=", "/>
+    </layout>
+  </citation>
+
+  <bibliography et-al-min="4" et-al-use-first="3" second-field-align="flush">
+    <layout hanging-indent="true" delimiter=". ">
+      <text macro="author"/>
+      <text macro="issued" prefix=" " suffix="."/>
+      <text macro="title"/>
+      <choose>
+        <if type="book">
+          <text variable="edition" prefix=" " suffix=" ed."/>
+          <text macro="publisher" prefix=". "/>
+          <text variable="number-of-pages" suffix=" p."/>
+        </if>
+        <else-if type="chapter">
+          <group prefix=". In: " delimiter=". ">
+            <text macro="editor"/>
+            <text variable="container-title"/>
+            <text macro="publisher"/>
+            <text macro="pages"/>
+          </group>
+        </else-if>
+        <else-if type="article-journal">
+          <group delimiter=". ">
+            <text variable="container-title"/>
+            <group delimiter=", ">
+              <text variable="volume" prefix="vol. "/>
+              <text variable="issue" prefix="no. "/>
+            </group>
+            <text macro="pages"/>
+            <text variable="DOI" prefix="http://dx.doi.org/"/>
+            <text variable="PMID" prefix="PMid: "/>
+          </group>
+        </else-if>
+        <else-if type="thesis">
+          <text macro="publisher" prefix=". "/>
+          <text variable="number-of-pages" suffix=" p."/>
+          <text variable="genre"/>
+        </else-if>
+        <else-if type="paper-conference">
+          <group prefix=". In: " delimiter=". ">
+            <text variable="event"/>
+            <text variable="event-place"/>
+            <text macro="publisher"/>
+            <text macro="pages"/>
+          </group>
+        </else-if>
+        <else-if type="webpage">
+          <text macro="access"/>
+        </else-if>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
